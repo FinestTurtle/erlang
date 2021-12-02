@@ -1,6 +1,7 @@
 -module(test).
 -export([start/0, client/2, server/0]).
 
+%Whenever a process receives a message it will check to see if it either continue or stops.
 client(N, ClientPID) ->
   ClientPID ! {N + 1, self()},
   receive
@@ -12,6 +13,7 @@ client(N, ClientPID) ->
       ClientPID ! done
   end.
 
+%
 server() ->
   receive
     done ->
